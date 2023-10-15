@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Scraper</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>종목</h1>
+    <form action="/scrape" method="post">
+        <button type="submit">Scrape Data</button>
+    </form>
+    <h2>Results:</h2>
+    <table>
+        <tr>
+            <th>종목명</th>
+            <th>상장주식수*1000</th>
+            <th>거래량</th>
+            <th>비율</th>
+        </tr>
+        {% for result in results %}
+            <tr>
+                <td>{{ result['종목명'] }}</td>
+                <td>{{ result['상장주식수*1000'] }}</td>
+                <td>{{ result['거래량'] }}</td>
+                <td>{{ result['비율'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
